@@ -1,4 +1,4 @@
-package jayray.net.hello;
+package coen268.com.hello;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

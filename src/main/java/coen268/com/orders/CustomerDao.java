@@ -1,4 +1,4 @@
-package jayray.net.orders;
+package coen268.com.orders;
 
 import java.util.ArrayList;
 import java.util.List;

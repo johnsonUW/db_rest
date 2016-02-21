@@ -1,12 +1,12 @@
-package jayray.net;
+package coen268.com;
 
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
 import javax.xml.bind.JAXBContext;
 
-import jayray.net.orders.Address;
-import jayray.net.orders.Customer;
-import jayray.net.orders.CustomerResource;
+import coen268.com.orders.Address;
+import coen268.com.orders.Customer;
+import coen268.com.orders.CustomerResource;
 
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.api.json.JSONJAXBContext;

@@ -1,4 +1,4 @@
-package jayray.net.orders;
+package coen268.com.orders;
 
 public class Namespaces {
 	private Namespaces() {
