@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DbUtil {
 	private static final String USER = "dbuser";
 	private static final String PASS = "dbuser";
-	private static final String SERVER = "localhost";
+	private static final String SERVER = "localhost"; // 52.193.219.37
 	
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 		Connection conn = null;

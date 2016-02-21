@@ -10,11 +10,63 @@ import javax.ws.rs.core.*;
 public class RestaurantResource {
 	// post a new restaurant
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addRestaurant(@FormParam("name") String name, @FormParam("address") String address) {
-		String output = "POST:";
-        return Response.status(200).entity(output).build();
+		Connection conn = null;
+		PreparedStatement ps1 = null, ps2 = null, ps3 = null;
+		ResultSet rs1 = null, rs2 = null;
+		
+		Restaurant restaurant = null;
+		
+		try {
+			conn = DbUtil.getConnection();
+			ps1 = conn.prepareStatement("select * from restaurant where name=? and address=?");
+			ps1.setString(1, name);
+			ps1.setString(2, address);
+			
+			rs1 = ps1.executeQuery();
+			
+			if(rs1.next()) {
+				// restaurant already exists
+				return Response.status(400).entity("{\"response\": \"Failed-restaurant already exists\"}").build();
+			}
+			
+			// add new restaurant
+			ps2 = conn.prepareStatement("insert into restaurant (name, address) values (?, ?)");
+			ps2.setString(1, name);
+			ps2.setString(2, address);
+			
+			ps2.executeUpdate();
+			
+			// return newly add restaurant
+			ps3 = conn.prepareStatement("select * from restaurant where name=? and address=?");
+			ps3.setString(1, name);
+			ps3.setString(2, address);
+			
+			rs2 = ps3.executeQuery();
+			
+			if(rs2.next()) {
+				restaurant = new Restaurant(rs2.getInt(1), rs2.getString(2), rs2.getString(3));
+			}
+			return Response.status(200).entity(restaurant).build();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return Response.status(500).build();
+		}
+		finally {
+			try {
+				if(rs1 != null) rs1.close();
+				if(rs2 != null) rs2.close();
+				if(ps1 != null) ps1.close();
+				if(ps2 != null) ps2.close();
+				if(ps3 != null) ps3.close();
+				if(conn != null) conn.close();
+			}
+			catch(Exception ex){}
+		}
+        
 	}
 
 	// get all restaurant

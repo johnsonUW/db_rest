@@ -1,6 +1,6 @@
-url design
+URL design
 
-Response is json.
+All Http Responses are json.
 
 - restaurant
 1. GET
@@ -12,6 +12,9 @@ get all restaurant id, name and address
 
 b. /db_rest/rest/restaurant/name/address
 get restaurant by name and address
+response:
+	existing restaurant: {"id": 1, "name": "restaurant_1", "address": "address_1"}
+	non-existing restaurant: {"id": -1, "name": null, "address": null}
 
 c. /db_rest/rest/restaurant/id
 get restaurant by id
@@ -19,7 +22,10 @@ get restaurant by id
 2. POST
 /db_rest/rest/restaurant
 add a restaurant
-{"name": "restaurant_1", "address": "address_1"}
+form parameters:
+	name: "restaurant_1"
+	address: "address_1"
+return status 200 and success message
 
 
 
@@ -34,14 +40,18 @@ return all reviews for a restaurant
 2. POST
 /db_rest/rest/review
 add a review for restaurant
-{"restaurant_id": 1, "review": "review_1"}
+parameters:
+	restaurant_id: 1
+	review": "review_1"
+return status 200 and success message
+	
 
 
 
 - dish
 1. GET
 /db_rest/rest/dish/restaurant_id
-get voting for all dishes of a restaurant
+get votings for all dishes of a restaurant
 [{"id": 1, "restaurant_id": 1, "name": "dish_1", "voting": 5},
  {"id": 2, "restaurant_id": 2, "name": "dish_2", "voting": 9}
 ]
@@ -49,5 +59,7 @@ get voting for all dishes of a restaurant
 2. POST
 /db_rest/rest/dish/restaurant_id
 increase voting by 1
-{"name": "dish_1"}
+parameters:
+	name: "dish_1"
+return status 200 and success message
 	
