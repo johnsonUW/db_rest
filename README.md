@@ -34,7 +34,7 @@ return status 200 and success message
 /db_rest/rest/review/restaurant_id
 return all reviews for a restaurant
 [{"id": 1, "restaurant_id": 1, "review": "review_1", "date": "2016-02-19 22:20:13"},
- {"id": 2, "restaurant_id": 2, "review": "review_2", "date": "2016-02-19 22:20:13"}
+ {"id": 2, "restaurant_id": 1, "review": "review_2", "date": "2016-02-19 22:20:13"}
 ]
 
 2. POST
