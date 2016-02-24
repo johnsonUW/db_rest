@@ -2,6 +2,8 @@ URL design
 
 All Http Responses are json.
 
+http://localhost:8080/uri-to-resource
+
 - restaurant
 1. GET
 a. /db_rest/rest/restaurant
