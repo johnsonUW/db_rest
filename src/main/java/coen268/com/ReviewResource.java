@@ -2,8 +2,6 @@ package coen268.com;
 
 import java.sql.*;
 import java.util.*;
-import java.util.Date;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 

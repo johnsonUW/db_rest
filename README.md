@@ -57,9 +57,10 @@ get votings for all dishes of a restaurant
 ]
 
 2. POST
-/db_rest/rest/dish/restaurant_id
+/db_rest/rest/dish
 increase voting by 1
 parameters:
+	restaurant_id: 1
 	name: "dish_1"
 return status 200 and success message
 	
