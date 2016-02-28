@@ -29,7 +29,8 @@ public class RestaurantResource {
 			
 			if(rs1.next()) {
 				// restaurant already exists
-				return Response.status(400).entity("{\"response\": \"Failed-restaurant already exists\"}").build();
+				restaurant = new Restaurant(rs1.getInt(1), rs1.getString(2), rs1.getString(3));
+				return Response.status(200).entity(restaurant).build();
 			}
 			
 			// add new restaurant
